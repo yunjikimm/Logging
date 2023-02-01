@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2C8421F1580B25D97CA9E7B /* Pods_Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B2A99A72D6C67EA65D49A /* Pods_Logging.framework */; };
+		DC180AEA2986526A00B72E5F /* LogTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */; };
 		DC24AF2E29813E8E009FF94F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF2D29813E8E009FF94F /* AppDelegate.swift */; };
 		DC24AF3029813E8E009FF94F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF2F29813E8E009FF94F /* SceneDelegate.swift */; };
 		DC24AF3229813E8E009FF94F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF3129813E8E009FF94F /* HomeViewController.swift */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C6B2A99A72D6C67EA65D49A /* Pods_Logging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		774DCEDE236994ADAD36A2A1 /* Pods-Logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logging.debug.xcconfig"; path = "Target Support Files/Pods-Logging/Pods-Logging.debug.xcconfig"; sourceTree = "<group>"; };
+		DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewHeaderView.swift; sourceTree = "<group>"; };
 		DC24AF2A29813E8E009FF94F /* Logging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC24AF2D29813E8E009FF94F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC24AF2F29813E8E009FF94F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		DC24AF3B29813E8F009FF94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC24AF442981400E009FF94F /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DC24AF46298258DA009FF94F /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		EF616E92B062D2F5718B2C99 /* Pods-Logging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logging.release.xcconfig"; path = "Target Support Files/Pods-Logging/Pods-Logging.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C8421F1580B25D97CA9E7B /* Pods_Logging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4891A9B048203F821BC39458 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C6B2A99A72D6C67EA65D49A /* Pods_Logging.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB40A49B18793EBD1F40D868 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				774DCEDE236994ADAD36A2A1 /* Pods-Logging.debug.xcconfig */,
+				EF616E92B062D2F5718B2C99 /* Pods-Logging.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DC24AF2129813E8E009FF94F = {
 			isa = PBXGroup;
 			children = (
 				DC24AF2C29813E8E009FF94F /* Logging */,
 				DC24AF2B29813E8E009FF94F /* Products */,
+				BB40A49B18793EBD1F40D868 /* Pods */,
+				4891A9B048203F821BC39458 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,7 +82,7 @@
 		DC24AF2C29813E8E009FF94F /* Logging */ = {
 			isa = PBXGroup;
 			children = (
-				DC24AF4329813F94009FF94F /* Controller */,
+				DC786C4A298AAC4D000E68D2 /* Controller */,
 				DC24AF4229813F8F009FF94F /* View */,
 				DC24AF4129813F87009FF94F /* Model */,
 				DC24AF2D29813E8E009FF94F /* AppDelegate.swift */,
@@ -79,11 +105,12 @@
 			isa = PBXGroup;
 			children = (
 				DC24AF46298258DA009FF94F /* LogTableViewCell.swift */,
+				DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		DC24AF4329813F94009FF94F /* Controller */ = {
+		DC786C4A298AAC4D000E68D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				DC24AF3129813E8E009FF94F /* HomeViewController.swift */,
@@ -98,9 +125,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC24AF3E29813E8F009FF94F /* Build configuration list for PBXNativeTarget "Logging" */;
 			buildPhases = (
+				2E93CF6521933A182284431A /* [CP] Check Pods Manifest.lock */,
 				DC24AF2629813E8E009FF94F /* Sources */,
 				DC24AF2729813E8E009FF94F /* Frameworks */,
 				DC24AF2829813E8E009FF94F /* Resources */,
+				CF3D58A4530C704819A9AA39 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,11 +184,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E93CF6521933A182284431A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Logging-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF3D58A4530C704819A9AA39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Logging/Pods-Logging-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Logging/Pods-Logging-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Logging/Pods-Logging-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC24AF2629813E8E009FF94F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC180AEA2986526A00B72E5F /* LogTableViewHeaderView.swift in Sources */,
 				DC24AF3229813E8E009FF94F /* HomeViewController.swift in Sources */,
 				DC24AF47298258DA009FF94F /* LogTableViewCell.swift in Sources */,
 				DC24AF452981400E009FF94F /* Content.swift in Sources */,
@@ -287,6 +359,7 @@
 		};
 		DC24AF3F29813E8F009FF94F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 774DCEDE236994ADAD36A2A1 /* Pods-Logging.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -313,6 +386,7 @@
 		};
 		DC24AF4029813E8F009FF94F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF616E92B062D2F5718B2C99 /* Pods-Logging.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
