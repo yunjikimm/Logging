@@ -7,15 +7,12 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
-struct Content: Hashable {
-    let id: UUID = UUID()
-    var title: String?
-    var content: String?
+struct Content: Codable {
+    var id: UUID = UUID()
+    var title: String!
+    var content: String!
     var createdAt: Date!
-//    var updateAt: String?
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
+    var updatedAt: Date!
 }

@@ -7,18 +7,19 @@
 
 import UIKit
 import JJFloatingActionButton
+import Alamofire
 
 class HomeViewController: UITableViewController {
     
     // MARK: components
-    private let logTableView: UITableView! = {
+    let logTableView: UITableView! = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         return tableView
     }()
-    let addCellActionButton = JJFloatingActionButton()
+    let writeContentActionButton = JJFloatingActionButton()
     
     let contentArray: [Content] = [
         Content(title: "What is Lorem Ipsum? What is Lorem Ipsum?", content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."),
@@ -32,11 +33,13 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         setAttribute()
         tableConfigure()
-        actionButton()
         buttonConfigure()
+        goToWriteEditor()
+        
+        
     }
     
-    // MARK: attribute
+    // MARK: set attribute
     private func setAttribute() {
         logTableView.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.tableViewCellID)
         logTableView.register(LogTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: LogTableViewHeaderView.headerViewID)
@@ -63,122 +66,27 @@ class HomeViewController: UITableViewController {
         ])
     }
     
-    // MARK: buttonConfigure
+    // MARK: buttonConfigure - JJFloatingActionButton
     private func buttonConfigure() {
-        view.addSubview(addCellActionButton)
+        view.addSubview(writeContentActionButton)
         
-        addCellActionButton.buttonColor = .black
+        writeContentActionButton.buttonColor = .black
         
-        addCellActionButton.translatesAutoresizingMaskIntoConstraints = false
+        writeContentActionButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            addCellActionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            addCellActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            writeContentActionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            writeContentActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
-    // MARK: actionButton
-    private func actionButton() {
-        addCellActionButton.addItem(title: "", image: nil) { item in
-            // do something
-            print("addCellActionButton - called")
+    // MARK: goToWriteEditor - JJFloatingActionButton
+    private func goToWriteEditor() {
+        writeContentActionButton.addItem(title: "", image: nil) { item in
+            let viewController = WriteContentViewController()
+            self.present(viewController, animated: true, completion: nil)
         }
     }
-
-}
-
-// MARK: extension - table cell
-extension HomeViewController {
     
-    // cell 개수
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.contentArray.count
-    }
-    
-    // 각 cell에 대한 설정
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // cell에 대한 인스턴스 생성 - dequeueReusableCell 재사용 셀
-        // as! : 자료형 강제 정의
-        let cell = logTableView.dequeueReusableCell(withIdentifier: LogTableViewCell.tableViewCellID, for: indexPath) as! LogTableViewCell
-        
-        cell.titleLabel.text = contentArray[indexPath.row].title
-        cell.contentLabel.text = contentArray[indexPath.row].content
-        
-        cell.separatorInset = .init(top: 0, left: 16, bottom: 0, right: 16)
-        
-        return cell
-    }
-    
-    // cell 스와이프
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        // 수정
-        let modifyCellActionButton = UIContextualAction(style: .normal, title: "수정", handler: { action, view, completionHandler in
-            
-            print("modifyCellActionButton - called")
-            
-        })
-        
-        // 삭제
-        let deleteCellActionButton = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHandler in
-            
-            print("deleteCellActionButton - called")
-            
-        })
-        
-        // backgroundColor
-        modifyCellActionButton.backgroundColor = .systemBlue
-        deleteCellActionButton.backgroundColor = .systemRed
-        
-        return UISwipeActionsConfiguration(actions: [modifyCellActionButton, deleteCellActionButton])
-        
-    }
+    // MARK: sendToModifyEditor
     
 }
-
-// MARK: extension - tableview header view
-extension HomeViewController {
-
-    // tableview haeder view
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = logTableView.dequeueReusableHeaderFooterView(withIdentifier: LogTableViewHeaderView.headerViewID) as! LogTableViewHeaderView
-
-        headerView.logoLabel.text = LogTableViewHeaderView.logoText
-
-        let backgroundView = UIView(frame: headerView.bounds)
-        headerView.backgroundView = backgroundView
-
-        return headerView
-    }
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return LogTableViewHeaderView.tableViewInitHeight
-    }
-
-}
-
-
-
-//#if DEBUG
-//import SwiftUI
-//struct HomeViewControllerRepresentable: UIViewControllerRepresentable {
-//    
-//func updateUIViewController(_ uiView: UIViewController,context: Context) {
-//        // leave this empty
-//}
-//@available(iOS 13.0.0, *)
-//func makeUIViewController(context: Context) -> UIViewController{
-//    HomeViewController()
-//    }
-//}
-//@available(iOS 13.0, *)
-//struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            HomeViewControllerRepresentable()
-//                .ignoresSafeArea()
-//                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-//                .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
-//        }
-//        
-//    }
-//} #endif

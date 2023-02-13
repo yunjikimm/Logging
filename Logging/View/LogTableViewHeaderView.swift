@@ -32,15 +32,15 @@ class LogTableViewHeaderView: UITableViewHeaderFooterView {
     // MARK: init
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        configureContents()
+        setUpView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    // MARK: configureContents
-    func configureContents() {
+    // MARK: setUpView
+    func setUpView() {
         contentView.addSubview(tableHeaderView)
         tableHeaderView.addSubview(logoLabel)
         

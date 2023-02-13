@@ -31,6 +31,7 @@ class LogTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "content"
+        label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
         return label
@@ -39,7 +40,7 @@ class LogTableViewCell: UITableViewCell {
     // MARK: init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureContents()
+        setUpView()
     }
     
     required init?(coder: NSCoder) {
@@ -47,8 +48,8 @@ class LogTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: configureContents
-    func configureContents() {
+    // MARK: setUpView
+    func setUpView() {
         contentView.addSubview(cellView)
         cellView.addSubview(titleLabel)
         cellView.addSubview(contentLabel)

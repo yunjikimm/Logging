@@ -15,6 +15,12 @@
 		DC24AF3729813E8F009FF94F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC24AF3629813E8F009FF94F /* Assets.xcassets */; };
 		DC24AF452981400E009FF94F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF442981400E009FF94F /* Content.swift */; };
 		DC24AF47298258DA009FF94F /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF46298258DA009FF94F /* LogTableViewCell.swift */; };
+		DC3076602990CD3A00AC61C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30765F2990CD3A00AC61C4 /* Constants.swift */; };
+		DC639DBE299A344500310C76 /* ContentEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC639DBD299A344500310C76 /* ContentEditorExtension.swift */; };
+		DC639DC0299A352300310C76 /* HomeViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC639DBF299A352300310C76 /* HomeViewExtension.swift */; };
+		DC639DC2299A37AC00310C76 /* ModifyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC639DC1299A37AC00310C76 /* ModifyContentViewController.swift */; };
+		DCA9018929901E0E00B01E26 /* ContentEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9018829901E0E00B01E26 /* ContentEditor.swift */; };
+		DCA9018B2990212500B01E26 /* WriteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9018A2990212500B01E26 /* WriteContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,12 @@
 		DC24AF3B29813E8F009FF94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC24AF442981400E009FF94F /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DC24AF46298258DA009FF94F /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		DC30765F2990CD3A00AC61C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DC639DBD299A344500310C76 /* ContentEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEditorExtension.swift; sourceTree = "<group>"; };
+		DC639DBF299A352300310C76 /* HomeViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewExtension.swift; sourceTree = "<group>"; };
+		DC639DC1299A37AC00310C76 /* ModifyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyContentViewController.swift; sourceTree = "<group>"; };
+		DCA9018829901E0E00B01E26 /* ContentEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEditor.swift; sourceTree = "<group>"; };
+		DCA9018A2990212500B01E26 /* WriteContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteContentViewController.swift; sourceTree = "<group>"; };
 		EF616E92B062D2F5718B2C99 /* Pods-Logging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logging.release.xcconfig"; path = "Target Support Files/Pods-Logging/Pods-Logging.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +94,7 @@
 		DC24AF2C29813E8E009FF94F /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				DC30765E2990CD1C00AC61C4 /* Utils */,
 				DC786C4A298AAC4D000E68D2 /* Controller */,
 				DC24AF4229813F8F009FF94F /* View */,
 				DC24AF4129813F87009FF94F /* Model */,
@@ -106,14 +119,27 @@
 			children = (
 				DC24AF46298258DA009FF94F /* LogTableViewCell.swift */,
 				DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */,
+				DCA9018829901E0E00B01E26 /* ContentEditor.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DC30765E2990CD1C00AC61C4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DC30765F2990CD3A00AC61C4 /* Constants.swift */,
+				DC639DBD299A344500310C76 /* ContentEditorExtension.swift */,
+				DC639DBF299A352300310C76 /* HomeViewExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		DC786C4A298AAC4D000E68D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				DC24AF3129813E8E009FF94F /* HomeViewController.swift */,
+				DCA9018A2990212500B01E26 /* WriteContentViewController.swift */,
+				DC639DC1299A37AC00310C76 /* ModifyContentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -231,12 +257,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCA9018B2990212500B01E26 /* WriteContentViewController.swift in Sources */,
+				DC639DC0299A352300310C76 /* HomeViewExtension.swift in Sources */,
 				DC180AEA2986526A00B72E5F /* LogTableViewHeaderView.swift in Sources */,
+				DCA9018929901E0E00B01E26 /* ContentEditor.swift in Sources */,
 				DC24AF3229813E8E009FF94F /* HomeViewController.swift in Sources */,
 				DC24AF47298258DA009FF94F /* LogTableViewCell.swift in Sources */,
 				DC24AF452981400E009FF94F /* Content.swift in Sources */,
 				DC24AF2E29813E8E009FF94F /* AppDelegate.swift in Sources */,
 				DC24AF3029813E8E009FF94F /* SceneDelegate.swift in Sources */,
+				DC639DBE299A344500310C76 /* ContentEditorExtension.swift in Sources */,
+				DC639DC2299A37AC00310C76 /* ModifyContentViewController.swift in Sources */,
+				DC3076602990CD3A00AC61C4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
