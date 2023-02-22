@@ -21,7 +21,6 @@ class LogTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "title"
         label.font = .boldSystemFont(ofSize: 25)
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
@@ -30,10 +29,16 @@ class LogTableViewCell: UITableViewCell {
     let contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "content"
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
+        return label
+    }()
+    let updatedAtLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .systemGray
         return label
     }()
     
@@ -52,6 +57,7 @@ class LogTableViewCell: UITableViewCell {
     func setUpView() {
         contentView.addSubview(cellView)
         cellView.addSubview(titleLabel)
+        cellView.addSubview(updatedAtLabel)
         cellView.addSubview(contentLabel)
         
         NSLayoutConstraint.activate([
@@ -64,11 +70,27 @@ class LogTableViewCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
             
-            contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            updatedAtLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            updatedAtLabel.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
+            updatedAtLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
+            
+            contentLabel.topAnchor.constraint(equalTo: updatedAtLabel.bottomAnchor, constant: 20),
             contentLabel.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
             contentLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
             contentLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -45),
         ])
     }
     
+    
+    
 }
+
+//extension LogTableViewCell {
+//    func setEmptyView() {
+//        self.backgroundView = EmptyLogTableViewCell()
+//    }
+//    
+//    func restore() {
+//        self.backgroundView = nil
+//    }
+//}

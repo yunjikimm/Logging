@@ -13,9 +13,13 @@ class ModifyContentViewController: WriteContentViewController {
     // MARK: override
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpView()
-        setPlaceHolderTitle()
-        self.hideKeyboardWhenTappedAround()
+        setUpTextColor()
+    }
+    
+    // MARK: setUpTextColor
+    func setUpTextColor() {
+        contentEditor.titleTextView.textColor = .black
+        contentEditor.contentTextView.textColor = .black
     }
     
 }

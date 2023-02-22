@@ -24,7 +24,6 @@ class LogTableViewHeaderView: UITableViewHeaderFooterView {
     let logoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "logo"
         label.font = .boldSystemFont(ofSize: 34)
         return label
     }()
@@ -47,8 +46,7 @@ class LogTableViewHeaderView: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate([
             tableHeaderView.topAnchor.constraint(equalTo: contentView.topAnchor),
             tableHeaderView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            tableHeaderView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), //
-//            tableHeaderView.widthAnchor.constraint(equalToConstant: contentView.frame.width), //
+            tableHeaderView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tableHeaderView.heightAnchor.constraint(equalToConstant: LogTableViewHeaderView.tableViewInitHeight),
             
             logoLabel.leadingAnchor.constraint(equalTo: tableHeaderView.leadingAnchor, constant: 16),

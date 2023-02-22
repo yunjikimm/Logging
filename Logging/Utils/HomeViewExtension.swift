@@ -13,7 +13,14 @@ extension HomeViewController {
     // MARK: extension - table cell
     // cell 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.contentArray.count
+        if self.contents.count == 0 {
+            self.tableView.backgroundView = EmptyLogTableViewCell()
+            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            return self.contents.count
+        }
     }
     
     // 각 cell에 대한 설정
@@ -22,9 +29,14 @@ extension HomeViewController {
         // as! : 자료형 강제 정의
         let cell = logTableView.dequeueReusableCell(withIdentifier: LogTableViewCell.tableViewCellID, for: indexPath) as! LogTableViewCell
         
-        cell.titleLabel.text = contentArray[indexPath.row].title
-        cell.contentLabel.text = contentArray[indexPath.row].content
-        
+        cell.titleLabel.text = contents[indexPath.row].title
+        cell.contentLabel.text = contents[indexPath.row].content
+        cell.updatedAtLabel.text = contents[indexPath.row].updatedAt
+
+//        let dataFormatter = DateFormatter()
+//        dataFormatter.dateFormat = "yyyy/MM/dd"
+//        let dateString = dataFormatter.date(from: contents[indexPath.row].updatedAt)
+
         cell.separatorInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         
         return cell
@@ -35,9 +47,11 @@ extension HomeViewController {
         
         // 수정
         let modifyCellActionButton = UIContextualAction(style: .normal, title: "수정", handler: { action, view, completionHandler in
+            let viewController = VIEWCONTROLLER.MODIFY
+            viewController.contentEditor.titleTextView.text = self.contents[indexPath.row].title
+            viewController.contentEditor.contentTextView.text = self.contents[indexPath.row].content
             
-            print("modifyCellActionButton - called")
-            
+            self.present(viewController, animated: true, completion: nil)
         })
         
         // 삭제
@@ -47,7 +61,7 @@ extension HomeViewController {
             
         })
         
-        // backgroundColor
+        // button backgroundColor
         modifyCellActionButton.backgroundColor = .systemBlue
         deleteCellActionButton.backgroundColor = .systemRed
         

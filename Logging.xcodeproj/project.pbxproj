@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D2C8421F1580B25D97CA9E7B /* Pods_Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B2A99A72D6C67EA65D49A /* Pods_Logging.framework */; };
+		DC0577E029A61F00004495F8 /* EmptyLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0577DF29A61F00004495F8 /* EmptyLogTableViewCell.swift */; };
 		DC180AEA2986526A00B72E5F /* LogTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */; };
 		DC24AF2E29813E8E009FF94F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF2D29813E8E009FF94F /* AppDelegate.swift */; };
 		DC24AF3029813E8E009FF94F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC24AF2F29813E8E009FF94F /* SceneDelegate.swift */; };
@@ -21,11 +22,14 @@
 		DC639DC2299A37AC00310C76 /* ModifyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC639DC1299A37AC00310C76 /* ModifyContentViewController.swift */; };
 		DCA9018929901E0E00B01E26 /* ContentEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9018829901E0E00B01E26 /* ContentEditor.swift */; };
 		DCA9018B2990212500B01E26 /* WriteContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9018A2990212500B01E26 /* WriteContentViewController.swift */; };
+		DCB7C410299E23F8003201C8 /* ContentDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB7C40F299E23F8003201C8 /* ContentDataService.swift */; };
+		DCDF3CE429A3687A0021D93B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDF3CE329A3687A0021D93B /* NetworkResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C6B2A99A72D6C67EA65D49A /* Pods_Logging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Logging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		774DCEDE236994ADAD36A2A1 /* Pods-Logging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logging.debug.xcconfig"; path = "Target Support Files/Pods-Logging/Pods-Logging.debug.xcconfig"; sourceTree = "<group>"; };
+		DC0577DF29A61F00004495F8 /* EmptyLogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyLogTableViewCell.swift; sourceTree = "<group>"; };
 		DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewHeaderView.swift; sourceTree = "<group>"; };
 		DC24AF2A29813E8E009FF94F /* Logging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Logging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC24AF2D29813E8E009FF94F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,8 @@
 		DC639DC1299A37AC00310C76 /* ModifyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyContentViewController.swift; sourceTree = "<group>"; };
 		DCA9018829901E0E00B01E26 /* ContentEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEditor.swift; sourceTree = "<group>"; };
 		DCA9018A2990212500B01E26 /* WriteContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteContentViewController.swift; sourceTree = "<group>"; };
+		DCB7C40F299E23F8003201C8 /* ContentDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDataService.swift; sourceTree = "<group>"; };
+		DCDF3CE329A3687A0021D93B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		EF616E92B062D2F5718B2C99 /* Pods-Logging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logging.release.xcconfig"; path = "Target Support Files/Pods-Logging/Pods-Logging.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +100,7 @@
 		DC24AF2C29813E8E009FF94F /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				DCB7C40E299E23CF003201C8 /* API */,
 				DC30765E2990CD1C00AC61C4 /* Utils */,
 				DC786C4A298AAC4D000E68D2 /* Controller */,
 				DC24AF4229813F8F009FF94F /* View */,
@@ -120,6 +127,7 @@
 				DC24AF46298258DA009FF94F /* LogTableViewCell.swift */,
 				DC180AE92986526A00B72E5F /* LogTableViewHeaderView.swift */,
 				DCA9018829901E0E00B01E26 /* ContentEditor.swift */,
+				DC0577DF29A61F00004495F8 /* EmptyLogTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +150,15 @@
 				DC639DC1299A37AC00310C76 /* ModifyContentViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		DCB7C40E299E23CF003201C8 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DCB7C40F299E23F8003201C8 /* ContentDataService.swift */,
+				DCDF3CE329A3687A0021D93B /* NetworkResult.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0577E029A61F00004495F8 /* EmptyLogTableViewCell.swift in Sources */,
 				DCA9018B2990212500B01E26 /* WriteContentViewController.swift in Sources */,
+				DCB7C410299E23F8003201C8 /* ContentDataService.swift in Sources */,
 				DC639DC0299A352300310C76 /* HomeViewExtension.swift in Sources */,
 				DC180AEA2986526A00B72E5F /* LogTableViewHeaderView.swift in Sources */,
 				DCA9018929901E0E00B01E26 /* ContentEditor.swift in Sources */,
@@ -269,6 +288,7 @@
 				DC639DBE299A344500310C76 /* ContentEditorExtension.swift in Sources */,
 				DC639DC2299A37AC00310C76 /* ModifyContentViewController.swift in Sources */,
 				DC3076602990CD3A00AC61C4 /* Constants.swift in Sources */,
+				DCDF3CE429A3687A0021D93B /* NetworkResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
