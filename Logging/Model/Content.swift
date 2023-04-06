@@ -6,35 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Root: Codable {
-    var contentsData: [Content]
+class Content: Object, Codable {
+    @Persisted(primaryKey: true) var _id: UUID
+    @Persisted var title: String?
+    @Persisted var content: String?
+    @Persisted var createdAt: Date?
+    @Persisted var updatedAt: Date?
     
-    enum CodingKeys:String, CodingKey {
-        case contentsData = "contentsData"
-    }
-}
-
-struct Content: Codable {
-    var id: String = UUID().uuidString
-    var title: String
-    var content: String
-    var createdAt: String
-    var updatedAt: String
-    
-    init(id: String, title: String, content: String, createdAt: String, updatedAt: String) {
-        self.id = id
+    convenience init(title: String, content: String) {
+        self.init()
         self.title = title
         self.content = content
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-    }
-    
-    enum CodingKeys:String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case content = "content"
-        case createdAt = "createdAt"
-        case updatedAt = "updatedAt"
     }
 }

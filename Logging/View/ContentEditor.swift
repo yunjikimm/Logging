@@ -16,9 +16,15 @@ class ContentEditor: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    let dismissButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("취소", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     let writeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("등록", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -62,12 +68,16 @@ class ContentEditor: UIView {
         writeScrollView.addSubview(titleTextView)
         writeScrollView.addSubview(contentTextView)
         writeScrollView.addSubview(writeButton)
+        writeScrollView.addSubview(dismissButton)
         
         NSLayoutConstraint.activate([
             writeScrollView.topAnchor.constraint(equalTo: topAnchor),
             writeScrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             writeScrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             writeScrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            dismissButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             
             writeButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             writeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),

@@ -7,7 +7,6 @@
 
 import UIKit
 import JJFloatingActionButton
-//import Alamofire
 
 class HomeViewController: UITableViewController {
     
@@ -21,8 +20,7 @@ class HomeViewController: UITableViewController {
     }()
     
     let writeContentActionButton = JJFloatingActionButton()
-    let contentDataService = ContentDataService()
-    var contents = [Content]()
+    var contentList = [Content]()
     
     // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -32,6 +30,11 @@ class HomeViewController: UITableViewController {
         buttonConfigure()
         goToWriteEditor()
         getAllContent()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        print("test - HomeVC viewWillAppear()")
     }
     
     // MARK: set attribute
@@ -79,21 +82,16 @@ class HomeViewController: UITableViewController {
         writeContentActionButton.addItem(title: "", image: nil) { item in
             self.present(VIEWCONTROLLER.WRITE, animated: true, completion: nil)
         }
+        VIEWCONTROLLER.WRITE.modalPresentationStyle = .fullScreen
     }
     
-    // MARK: getAllContent - Alamofire
-    private func getAllContent() {
-        contentDataService.getAllContent { response in
-            switch response {
-            case .success(let data):
-                for item in data.contentsData {
-                    self.contents.append(Content(id: item.id, title: item.title, content: item.content, createdAt: item.createdAt, updatedAt: item.updatedAt))
-                }
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
+    // MARK: getAllContent - Realm Get
+    func getAllContent() {
+        let contentObj = ContentDataService().getContent()
+        for item in contentObj {
+            contentList.append(item)
         }
     }
+    
     
 }

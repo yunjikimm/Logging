@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 // MARK: ViewController
 enum VIEWCONTROLLER {
+    static let HOME = HomeViewController()
     static let WRITE = WriteContentViewController()
     static let MODIFY = ModifyContentViewController()
 }
@@ -25,7 +27,15 @@ enum EMPTYTABLE {
     static let EMPTY = "아직 글이 없습니다.\n지금 바로 새로운 로그를 남겨보세요!"
 }
 
-// MARK: API
-enum API {
-    static let URL: String = "https://d427a9ed-180b-4e96-a309-3ff04fa81ba7.mock.pstmn.io/contents"
+// MARK: content model name
+enum CONTENTMODEL {
+    static let ID = "id"
+    static let TITLE = "title"
+    static let CONTENT = "content"
+    static let CREATEDAT = "createdAt"
+    static let UPDATEDAT = "updatedAt"
+}
+
+enum URL {
+    static let REALMDB = Realm.Configuration.defaultConfiguration.fileURL
 }

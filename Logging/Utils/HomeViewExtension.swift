@@ -13,13 +13,13 @@ extension HomeViewController {
     // MARK: extension - table cell
     // cell 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.contents.count == 0 {
+        if self.contentList.count == 0 {
             self.tableView.backgroundView = EmptyLogTableViewCell()
             self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             return 0
         } else {
             self.tableView.backgroundView = nil
-            return self.contents.count
+            return self.contentList.count
         }
     }
     
@@ -29,13 +29,16 @@ extension HomeViewController {
         // as! : 자료형 강제 정의
         let cell = logTableView.dequeueReusableCell(withIdentifier: LogTableViewCell.tableViewCellID, for: indexPath) as! LogTableViewCell
         
-        cell.titleLabel.text = contents[indexPath.row].title
-        cell.contentLabel.text = contents[indexPath.row].content
-        cell.updatedAtLabel.text = contents[indexPath.row].updatedAt
-
-//        let dataFormatter = DateFormatter()
-//        dataFormatter.dateFormat = "yyyy/MM/dd"
-//        let dateString = dataFormatter.date(from: contents[indexPath.row].updatedAt)
+        let dataFormatter = DateFormatter()
+        dataFormatter.dateFormat = "yyyy/MM/dd"
+        
+        cell.titleLabel.text = contentList[indexPath.row].title
+        cell.contentLabel.text = contentList[indexPath.row].content
+        
+        if let updatedDate = contentList[indexPath.row].updatedAt {
+            let dateString = dataFormatter.string(from: updatedDate)
+            cell.updatedAtLabel.text = String(describing: dateString)
+        }
 
         cell.separatorInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         
@@ -47,17 +50,24 @@ extension HomeViewController {
         
         // 수정
         let modifyCellActionButton = UIContextualAction(style: .normal, title: "수정", handler: { action, view, completionHandler in
-            let viewController = VIEWCONTROLLER.MODIFY
-            viewController.contentEditor.titleTextView.text = self.contents[indexPath.row].title
-            viewController.contentEditor.contentTextView.text = self.contents[indexPath.row].content
             
-            self.present(viewController, animated: true, completion: nil)
+            VIEWCONTROLLER.MODIFY.modifiedContentList = Content(value: [
+                "_id": self.contentList[indexPath.row]._id,
+                "title": self.contentList[indexPath.row].title!,
+                "content": self.contentList[indexPath.row].content!,
+                "createdAt": self.contentList[indexPath.row].createdAt!,
+                "updatedAt": self.contentList[indexPath.row].updatedAt!
+            ])
+            
+            VIEWCONTROLLER.MODIFY.modalPresentationStyle = .fullScreen
+            self.present(VIEWCONTROLLER.MODIFY, animated: true, completion: nil)
+            
         })
         
         // 삭제
         let deleteCellActionButton = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHandler in
             
-            print("deleteCellActionButton - called")
+            ContentDataService().deleteContent(indexPath.row)
             
         })
         
@@ -65,7 +75,10 @@ extension HomeViewController {
         modifyCellActionButton.backgroundColor = .systemBlue
         deleteCellActionButton.backgroundColor = .systemRed
         
-        return UISwipeActionsConfiguration(actions: [modifyCellActionButton, deleteCellActionButton])
+        let config = UISwipeActionsConfiguration(actions: [modifyCellActionButton, deleteCellActionButton])
+        config.performsFirstActionWithFullSwipe = false
+        
+        return config
     }
     
     // MARK: extension - tableview header view
