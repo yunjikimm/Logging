@@ -11,22 +11,14 @@ import RealmSwift
 import Alamofire
 
 class ContentDataService {
-    static let contentDataService = ContentDataService()
+    static let shared = ContentDataService()
     let realm = try! Realm()
     
-    // MARK: GET - All Content
-    func getContent() -> Results<Content> {
-        let contents = realm.objects(Content.self)
-        let sortedContents = contents.sorted(byKeyPath: "updatedAt", ascending: false)
-        
-        return sortedContents
-    }
-    
-    // MARK: POST - New Content
-    func postContent(_ parameter: Content) {
+    // MARK: CREATE - New Content
+    func createContent<T: Content>(_ object: T) {
         do {
             try realm.write {
-                realm.add(parameter)
+                realm.add(object)
             }
         } catch let error as NSError {
             print("postContent() error: \(error)")
@@ -34,10 +26,16 @@ class ContentDataService {
     }
     
     // MARK: UPDATE - Modify Content
-    func updateContent(_ parameter: Content) {
+    func updateContent<T: Content>(_ object: T) {
+        guard let selected = realm.object(ofType: Content.self, forPrimaryKey: object._id) else {
+            print("not found")
+            return
+        }
         do {
             try realm.write {
-                realm.create(Content.self, value: parameter, update: .modified)
+                selected.title = object.title
+                selected.content = object.content
+                selected.updatedAt = object.updatedAt
             }
         } catch let error as NSError {
             print("updateContent() error: \(error)")
@@ -45,11 +43,10 @@ class ContentDataService {
     }
     
     // MARK: DELETE - Delete Content
-    func deleteContent(_ indexPath: Int) {
-        let contents = realm.objects(Content.self)
+    func deleteContent<T: Content>(_ Object: T) {
         do {
             try realm.write {
-                realm.delete(contents[indexPath])
+                realm.delete(Object)
             }
         } catch let error as NSError {
             print("deleteContent() error: \(error)")

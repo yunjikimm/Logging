@@ -7,6 +7,7 @@
 
 import UIKit
 import JJFloatingActionButton
+import RealmSwift
 
 class HomeViewController: UITableViewController {
     
@@ -22,6 +23,9 @@ class HomeViewController: UITableViewController {
     let writeContentActionButton = JJFloatingActionButton()
     var contentList = [Content]()
     
+    var contentObject: Results<Content>!
+    var notificationToken: NotificationToken?
+    
     // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +33,15 @@ class HomeViewController: UITableViewController {
         tableConfigure()
         buttonConfigure()
         goToWriteEditor()
-        getAllContent()
+        readAllContent()
+        
+        notificationToken = contentObject.observe { (changes) in
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        print("test - HomeVC viewWillAppear()")
     }
     
     // MARK: set attribute
@@ -85,12 +92,9 @@ class HomeViewController: UITableViewController {
         VIEWCONTROLLER.WRITE.modalPresentationStyle = .fullScreen
     }
     
-    // MARK: getAllContent - Realm Get
-    func getAllContent() {
-        let contentObj = ContentDataService().getContent()
-        for item in contentObj {
-            contentList.append(item)
-        }
+    // MARK: readAllContent - Realm Get
+    func readAllContent() {
+        self.contentObject = ContentDataService.shared.realm.objects(Content.self).sorted(byKeyPath: "updatedAt", ascending: false)
     }
     
     

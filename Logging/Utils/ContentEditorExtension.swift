@@ -113,8 +113,9 @@ extension ModifyContentViewController: UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        contentEditor.titleTextView.text = modifiedContentList.title
-        contentEditor.contentTextView.text = modifiedContentList.content
+        
+        contentEditor.titleTextView.text = contentList.title
+        contentEditor.contentTextView.text = contentList.content
         contentEditor.titleTextView.textColor = .black
         contentEditor.contentTextView.textColor = .black
     }

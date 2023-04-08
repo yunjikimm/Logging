@@ -13,13 +13,13 @@ extension HomeViewController {
     // MARK: extension - table cell
     // cell 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.contentList.count == 0 {
+        if self.contentObject.count == 0 {
             self.tableView.backgroundView = EmptyLogTableViewCell()
             self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             return 0
         } else {
             self.tableView.backgroundView = nil
-            return self.contentList.count
+            return self.contentObject.count
         }
     }
     
@@ -32,10 +32,10 @@ extension HomeViewController {
         let dataFormatter = DateFormatter()
         dataFormatter.dateFormat = "yyyy/MM/dd"
         
-        cell.titleLabel.text = contentList[indexPath.row].title
-        cell.contentLabel.text = contentList[indexPath.row].content
+        cell.titleLabel.text = contentObject[indexPath.row].title
+        cell.contentLabel.text = contentObject[indexPath.row].content
         
-        if let updatedDate = contentList[indexPath.row].updatedAt {
+        if let updatedDate = contentObject[indexPath.row].updatedAt {
             let dateString = dataFormatter.string(from: updatedDate)
             cell.updatedAtLabel.text = String(describing: dateString)
         }
@@ -51,13 +51,13 @@ extension HomeViewController {
         // 수정
         let modifyCellActionButton = UIContextualAction(style: .normal, title: "수정", handler: { action, view, completionHandler in
             
-            VIEWCONTROLLER.MODIFY.modifiedContentList = Content(value: [
-                "_id": self.contentList[indexPath.row]._id,
-                "title": self.contentList[indexPath.row].title!,
-                "content": self.contentList[indexPath.row].content!,
-                "createdAt": self.contentList[indexPath.row].createdAt!,
-                "updatedAt": self.contentList[indexPath.row].updatedAt!
-            ])
+            VIEWCONTROLLER.MODIFY.contentList = Content(
+                _id: self.contentObject[indexPath.row]._id,
+                title: self.contentObject[indexPath.row].title!,
+                content: self.contentObject[indexPath.row].content!,
+                createdAt: self.contentObject[indexPath.row].createdAt!,
+                updatedAt: self.contentObject[indexPath.row].updatedAt!
+            )
             
             VIEWCONTROLLER.MODIFY.modalPresentationStyle = .fullScreen
             self.present(VIEWCONTROLLER.MODIFY, animated: true, completion: nil)
@@ -67,7 +67,7 @@ extension HomeViewController {
         // 삭제
         let deleteCellActionButton = UIContextualAction(style: .normal, title: "삭제", handler: { action, view, completionHandler in
             
-            ContentDataService().deleteContent(indexPath.row)
+            ContentDataService.shared.deleteContent(self.contentObject[indexPath.row])
             
         })
         

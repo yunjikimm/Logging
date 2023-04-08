@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class ModifyContentViewController: UIViewController {
     
@@ -15,7 +16,7 @@ class ModifyContentViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    var modifiedContentList: Content! = nil
+    var contentList: Content! = nil
     
     // MARK: override
     override func viewDidLoad() {
@@ -54,15 +55,16 @@ class ModifyContentViewController: UIViewController {
     
     // MARK: clickedWriteButton - Realm Post
     @objc func clickedWriteButton() {
-        let date = Date()
-        let parameter = Content(value: [
-            "_id": modifiedContentList._id,
-            "title": contentEditor.titleTextView.text!,
-            "content": contentEditor.contentTextView.text!,
-            "createdAt": modifiedContentList.createdAt!,
-            "updatedAt": date
-        ])
-        ContentDataService().updateContent(parameter)
+        let newDate = Date()
+        
+        let modifiedContentObject = Content(
+            _id: contentList._id,
+            title: contentEditor.titleTextView.text!,
+            content: contentEditor.contentTextView.text!,
+            createdAt: contentList.createdAt!,
+            updatedAt: newDate
+        )
+        ContentDataService().updateContent(modifiedContentObject)
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
     

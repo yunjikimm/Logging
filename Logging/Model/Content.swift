@@ -15,9 +15,12 @@ class Content: Object, Codable {
     @Persisted var createdAt: Date?
     @Persisted var updatedAt: Date?
     
-    convenience init(title: String, content: String) {
+    convenience init(_id: UUID, title: String, content: String, createdAt: Date, updatedAt: Date) {
         self.init()
+        self._id = _id
         self.title = title
         self.content = content
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class WriteContentViewController: UIViewController {
     
@@ -54,21 +55,20 @@ class WriteContentViewController: UIViewController {
     // MARK: clickedWriteButton - Realm Post
     @objc func clickedWriteButton() {
         let date = Date()
-        var parameter: Content
         
         if contentEditor.titleTextView.text!.contains(PLACEHOLDER.TITLE) {
             alertNilText("제목")
         } else if contentEditor.contentTextView.text!.contains(PLACEHOLDER.CONTENT) {
             alertNilText("내용")
         } else {
-            parameter = Content(value: [
-                "_id": UUID(),
-                "title": contentEditor.titleTextView.text!,
-                "content": contentEditor.contentTextView.text!,
-                "createdAt": date,
-                "updatedAt": date
-            ])
-            ContentDataService().postContent(parameter)
+            let createdContentObject = Content(
+                _id: UUID(),
+                title: contentEditor.titleTextView.text!,
+                content: contentEditor.contentTextView.text!,
+                createdAt: date,
+                updatedAt: date
+            )
+            ContentDataService().createContent(createdContentObject)
             self.view.window?.rootViewController?.dismiss(animated: true)
         }
     }
