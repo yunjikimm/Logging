@@ -27,7 +27,7 @@ extension HomeViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // cell에 대한 인스턴스 생성 - dequeueReusableCell 재사용 셀
         // as! : 자료형 강제 정의
-        let cell = logTableView.dequeueReusableCell(withIdentifier: LogTableViewCell.tableViewCellID, for: indexPath) as! LogTableViewCell
+        let cell = logTableView.dequeueReusableCell(withIdentifier: ID.TABLEVIEWCELL, for: indexPath) as! LogTableViewCell
         
         let dataFormatter = DateFormatter()
         dataFormatter.dateFormat = "yyyy/MM/dd"
@@ -84,9 +84,9 @@ extension HomeViewController {
     // MARK: extension - tableview header view
     // tableview haeder view
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = logTableView.dequeueReusableHeaderFooterView(withIdentifier: LogTableViewHeaderView.headerViewID) as! LogTableViewHeaderView
+        let headerView = logTableView.dequeueReusableHeaderFooterView(withIdentifier: ID.TABLEVIEWHEADERVIEW) as! LogTableViewHeaderView
 
-        headerView.logoLabel.text = LogTableViewHeaderView.logoText
+        headerView.logoLabel.text = LOGO.LOGGING
 
         let backgroundView = UIView(frame: headerView.bounds)
         headerView.backgroundView = backgroundView

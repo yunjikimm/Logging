@@ -16,6 +16,12 @@ class ContentEditor: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    let groupView: UIView = {
+        let view = UIView()
+        view.sizeToFit()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     let dismissButton: UIButton = {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
@@ -31,8 +37,6 @@ class ContentEditor: UIView {
     }()
     let titleTextView: UITextView = {
         let view = UITextView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
         view.text = PLACEHOLDER.TITLE
         view.textColor = UIColor.lightGray
         view.font = .boldSystemFont(ofSize: 25)
@@ -42,12 +46,17 @@ class ContentEditor: UIView {
     }()
     let contentTextView: UITextView = {
         let view = UITextView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
         view.text = PLACEHOLDER.CONTENT
         view.textColor = UIColor.lightGray
         view.font = .systemFont(ofSize: 17)
         view.isScrollEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let pathView: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.lightGray.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -65,30 +74,43 @@ class ContentEditor: UIView {
     // MARK: setUpView
     func setUpView() {
         addSubview(writeScrollView)
-        writeScrollView.addSubview(titleTextView)
-        writeScrollView.addSubview(contentTextView)
-        writeScrollView.addSubview(writeButton)
-        writeScrollView.addSubview(dismissButton)
+        writeScrollView.addSubview(groupView)
+        groupView.addSubview(writeButton)
+        groupView.addSubview(dismissButton)
+        groupView.addSubview(titleTextView)
+        groupView.addSubview(pathView)
+        groupView.addSubview(contentTextView)
         
         NSLayoutConstraint.activate([
-            writeScrollView.topAnchor.constraint(equalTo: topAnchor),
-            writeScrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            writeScrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            writeScrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            writeScrollView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            writeScrollView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            writeScrollView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            writeScrollView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
             
-            dismissButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            dismissButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            groupView.topAnchor.constraint(equalTo: writeScrollView.topAnchor),
+            groupView.leadingAnchor.constraint(equalTo: writeScrollView.leadingAnchor),
+            groupView.trailingAnchor.constraint(equalTo: writeScrollView.trailingAnchor),
+            groupView.widthAnchor.constraint(equalTo: writeScrollView.widthAnchor),
+            groupView.heightAnchor.constraint(equalTo: writeScrollView.heightAnchor),
             
-            writeButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            writeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            dismissButton.topAnchor.constraint(equalTo: groupView.topAnchor, constant: 10),
+            dismissButton.leadingAnchor.constraint(equalTo: groupView.leadingAnchor, constant: 7),
+            
+            writeButton.topAnchor.constraint(equalTo: groupView.topAnchor, constant: 10),
+            writeButton.trailingAnchor.constraint(equalTo: groupView.trailingAnchor, constant: -7),
             
             titleTextView.topAnchor.constraint(equalTo: writeButton.bottomAnchor, constant: 10),
-            titleTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            titleTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            titleTextView.leadingAnchor.constraint(equalTo: groupView.leadingAnchor, constant: 7),
+            titleTextView.trailingAnchor.constraint(equalTo: groupView.trailingAnchor, constant: -7),
             
-            contentTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 20),
-            contentTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            contentTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            pathView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 10),
+            pathView.leadingAnchor.constraint(equalTo: groupView.leadingAnchor, constant: 7),
+            pathView.trailingAnchor.constraint(equalTo: groupView.trailingAnchor, constant: -7),
+            pathView.heightAnchor.constraint(equalToConstant: 1),
+            
+            contentTextView.topAnchor.constraint(equalTo: pathView.bottomAnchor, constant: 15),
+            contentTextView.leadingAnchor.constraint(equalTo: groupView.leadingAnchor, constant: 7),
+            contentTextView.trailingAnchor.constraint(equalTo: groupView.trailingAnchor, constant: -7),
         ])
     }
     

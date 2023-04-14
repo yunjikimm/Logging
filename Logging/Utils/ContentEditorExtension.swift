@@ -46,24 +46,7 @@ extension WriteContentViewController: UITextViewDelegate {
         return newLength < limitedLength
     }
     
-    // MARK: extension - hide keyboard when tapped around
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        contentEditor.titleTextView.text = PLACEHOLDER.TITLE
-        contentEditor.contentTextView.text = PLACEHOLDER.CONTENT
-        
-        contentEditor.titleTextView.textColor = UIColor.lightGray
-        contentEditor.contentTextView.textColor = UIColor.lightGray
-    }
-    
+    // MARK: alertNilText
     func alertNilText(_ alertText: String) {
         let alert = UIAlertController(title: "알림", message: alertText+"을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
         let defaultAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
@@ -74,6 +57,15 @@ extension WriteContentViewController: UITextViewDelegate {
 }
 
 extension ModifyContentViewController: UITextViewDelegate {
+    
+    // MARK: extension - textView focus placeholder
+    // textView focus
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == PLACEHOLDER.TITLE || textView.text == PLACEHOLDER.CONTENT {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
     
     // textView focus end
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -102,22 +94,12 @@ extension ModifyContentViewController: UITextViewDelegate {
         return newLength < limitedLength
     }
     
-    // MARK: extension - hide keyboard when tapped around
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        contentEditor.titleTextView.text = contentList.title
-        contentEditor.contentTextView.text = contentList.content
-        contentEditor.titleTextView.textColor = .black
-        contentEditor.contentTextView.textColor = .black
+    // MARK: alertNilText
+    func alertNilText(_ alertText: String) {
+        let alert = UIAlertController(title: "알림", message: alertText+"을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+        let defaultAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: false)
     }
     
 }

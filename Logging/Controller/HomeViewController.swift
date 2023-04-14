@@ -46,8 +46,8 @@ class HomeViewController: UITableViewController {
     
     // MARK: set attribute
     private func setAttribute() {
-        logTableView.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.tableViewCellID)
-        logTableView.register(LogTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: LogTableViewHeaderView.headerViewID)
+        logTableView.register(LogTableViewCell.self, forCellReuseIdentifier: ID.TABLEVIEWCELL)
+        logTableView.register(LogTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: ID.TABLEVIEWHEADERVIEW)
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0.0

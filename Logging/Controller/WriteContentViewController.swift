@@ -22,9 +22,16 @@ class WriteContentViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setUpTextView()
-        self.hideKeyboardWhenTappedAround()
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentEditor.titleTextView.text = PLACEHOLDER.TITLE
+        contentEditor.contentTextView.text = PLACEHOLDER.CONTENT
+        contentEditor.titleTextView.textColor = UIColor.lightGray
+        contentEditor.contentTextView.textColor = UIColor.lightGray
+        print(contentEditor.groupView.intrinsicContentSize.width)
     }
     
     // MARK: setUpView
@@ -55,10 +62,12 @@ class WriteContentViewController: UIViewController {
     // MARK: clickedWriteButton - Realm Post
     @objc func clickedWriteButton() {
         let date = Date()
+        let writedTitleText = contentEditor.titleTextView.text!
+        let writedContentText = contentEditor.contentTextView.text!
         
-        if contentEditor.titleTextView.text!.contains(PLACEHOLDER.TITLE) {
+        if writedTitleText.contains(PLACEHOLDER.TITLE) {
             alertNilText("제목")
-        } else if contentEditor.contentTextView.text!.contains(PLACEHOLDER.CONTENT) {
+        } else if writedContentText.contains(PLACEHOLDER.CONTENT) {
             alertNilText("내용")
         } else {
             let createdContentObject = Content(

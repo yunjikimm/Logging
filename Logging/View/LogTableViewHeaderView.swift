@@ -10,8 +10,6 @@ import UIKit
 
 class LogTableViewHeaderView: UITableViewHeaderFooterView {
     
-    static let headerViewID = "LogoTableViewHeaderView"
-    static let logoText = "Logging"
     static let tableViewInitHeight = 105.0
     
     // MARK: component

@@ -23,9 +23,15 @@ class ModifyContentViewController: UIViewController {
         super.viewDidLoad()
         setUpTextView()
         setUpView()
-        self.hideKeyboardWhenTappedAround()
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentEditor.titleTextView.text = contentList.title
+        contentEditor.contentTextView.text = contentList.content
+        contentEditor.titleTextView.textColor = .black
+        contentEditor.contentTextView.textColor = .black
     }
     
     // MARK: setUpTextView
@@ -57,15 +63,21 @@ class ModifyContentViewController: UIViewController {
     @objc func clickedWriteButton() {
         let newDate = Date()
         
-        let modifiedContentObject = Content(
-            _id: contentList._id,
-            title: contentEditor.titleTextView.text!,
-            content: contentEditor.contentTextView.text!,
-            createdAt: contentList.createdAt!,
-            updatedAt: newDate
-        )
-        ContentDataService().updateContent(modifiedContentObject)
-        self.view.window?.rootViewController?.dismiss(animated: true)
+        if contentEditor.titleTextView.text!.contains(PLACEHOLDER.TITLE) {
+            alertNilText("제목")
+        } else if contentEditor.contentTextView.text!.contains(PLACEHOLDER.CONTENT) {
+            alertNilText("내용")
+        } else {
+            let modifiedContentObject = Content(
+                _id: contentList._id,
+                title: contentEditor.titleTextView.text!,
+                content: contentEditor.contentTextView.text!,
+                createdAt: contentList.createdAt!,
+                updatedAt: newDate
+            )
+            ContentDataService().updateContent(modifiedContentObject)
+            self.view.window?.rootViewController?.dismiss(animated: true)
+        }        
     }
     
 }

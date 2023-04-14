@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import RealmSwift
 
+// MARK: logo text
+enum LOGO {
+    static let LOGGING = "Logging"
+}
+
 // MARK: ViewController
 enum VIEWCONTROLLER {
     static let HOME = HomeViewController()
@@ -36,6 +41,8 @@ enum CONTENTMODEL {
     static let UPDATEDAT = "updatedAt"
 }
 
-enum URL {
-    static let REALMDB = Realm.Configuration.defaultConfiguration.fileURL
+// MARK: register ID
+enum ID {
+    static let TABLEVIEWCELL =  "LogTableViewCell"
+    static let TABLEVIEWHEADERVIEW =  "LogoTableViewHeaderView"
 }

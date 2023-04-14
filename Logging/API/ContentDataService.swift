@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import RealmSwift
-import Alamofire
 
 class ContentDataService {
     static let shared = ContentDataService()

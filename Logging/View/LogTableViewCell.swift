@@ -10,8 +10,6 @@ import UIKit
 
 class LogTableViewCell: UITableViewCell {
     
-    static let tableViewCellID = "LogTableViewCell"
-    
     // MARK: component
     let cellView: UIView = {
         let view = UIView()
@@ -81,16 +79,4 @@ class LogTableViewCell: UITableViewCell {
         ])
     }
     
-    
-    
 }
-
-//extension LogTableViewCell {
-//    func setEmptyView() {
-//        self.backgroundView = EmptyLogTableViewCell()
-//    }
-//    
-//    func restore() {
-//        self.backgroundView = nil
-//    }
-//}

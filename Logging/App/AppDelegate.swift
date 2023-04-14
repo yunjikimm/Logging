@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
+        
+        IQKeyboardManager.shared.enable = true
+        
+        Thread.sleep(forTimeInterval: 2)
         
         return true
     }
