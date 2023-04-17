@@ -31,7 +31,6 @@ class WriteContentViewController: UIViewController {
         contentEditor.contentTextView.text = PLACEHOLDER.CONTENT
         contentEditor.titleTextView.textColor = UIColor.lightGray
         contentEditor.contentTextView.textColor = UIColor.lightGray
-        print(contentEditor.groupView.intrinsicContentSize.width)
     }
     
     // MARK: setUpView
