@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
         
-        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enable = true
         
         Thread.sleep(forTimeInterval: 2)
         
@@ -42,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        // 세로방향 고정
+        return UIInterfaceOrientationMask.portrait
+    }
 
 }
 

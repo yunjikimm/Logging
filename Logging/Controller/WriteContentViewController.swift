@@ -22,6 +22,7 @@ class WriteContentViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setUpTextView()
+        setUpKeyboardButton()
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
     }
@@ -64,9 +65,9 @@ class WriteContentViewController: UIViewController {
         let writedTitleText = contentEditor.titleTextView.text!
         let writedContentText = contentEditor.contentTextView.text!
         
-        if writedTitleText.contains(PLACEHOLDER.TITLE) {
+        if writedTitleText == PLACEHOLDER.TITLE {
             alertNilText("제목")
-        } else if writedContentText.contains(PLACEHOLDER.CONTENT) {
+        } else if writedContentText == PLACEHOLDER.CONTENT {
             alertNilText("내용")
         } else {
             let createdContentObject = Content(

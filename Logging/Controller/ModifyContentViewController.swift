@@ -23,6 +23,7 @@ class ModifyContentViewController: UIViewController {
         super.viewDidLoad()
         setUpTextView()
         setUpView()
+        setUpKeyboardButton()
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
     }
@@ -62,10 +63,12 @@ class ModifyContentViewController: UIViewController {
     // MARK: clickedWriteButton - Realm Post
     @objc func clickedWriteButton() {
         let newDate = Date()
+        let modifiedTitleText = contentEditor.titleTextView.text!
+        let modifiedContentText = contentEditor.contentTextView.text!
         
-        if contentEditor.titleTextView.text!.contains(PLACEHOLDER.TITLE) {
+        if modifiedTitleText == PLACEHOLDER.TITLE {
             alertNilText("제목")
-        } else if contentEditor.contentTextView.text!.contains(PLACEHOLDER.CONTENT) {
+        } else if modifiedContentText == PLACEHOLDER.CONTENT {
             alertNilText("내용")
         } else {
             let modifiedContentObject = Content(

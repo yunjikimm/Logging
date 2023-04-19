@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension WriteContentViewController: UITextViewDelegate {
+extension WriteContentViewController: UITextViewDelegate, UITextFieldDelegate {
     
     // MARK: extension - textView focus placeholder
     // textView focus
@@ -18,7 +18,6 @@ extension WriteContentViewController: UITextViewDelegate {
             textView.textColor = UIColor.black
         }
     }
-
     // textView focus end
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
@@ -38,12 +37,42 @@ extension WriteContentViewController: UITextViewDelegate {
         
         var limitedLength: Int
         if textView == contentEditor.titleTextView {
-            limitedLength = 60
+            limitedLength = 100
         } else {
             limitedLength = 1000
         }
         
         return newLength < limitedLength
+    }
+    
+    // MARK: extension - textViewDidChange
+    func textViewDidChange(_ textView: UITextView) {
+        let title = contentEditor.titleTextView
+        let content = contentEditor.contentTextView
+        
+        guard let changedTextView = title.text else { return }
+        if changedTextView.contains("\n") {
+            let trimText = changedTextView.trimmingCharacters(in: .newlines)
+            title.text = trimText
+            content.becomeFirstResponder()
+            content.selectedTextRange = content.textRange(from: content.endOfDocument, to: content.endOfDocument)
+        }
+    }
+    
+    // MARK: extension - setUpKeyboardButton
+    func setUpKeyboardButton() {
+        let toolbar = UIToolbar()
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(endEditingToKeyboard))
+        let flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.sizeToFit()
+        toolbar.setItems([flexibleSpaceButton, doneBtn], animated: false)
+        
+        contentEditor.titleTextView.inputAccessoryView = toolbar
+        contentEditor.contentTextView.inputAccessoryView = toolbar
+    }
+    @objc func endEditingToKeyboard() {
+        contentEditor.titleTextView.resignFirstResponder()
+        contentEditor.contentTextView.resignFirstResponder()
     }
     
     // MARK: alertNilText
@@ -56,7 +85,7 @@ extension WriteContentViewController: UITextViewDelegate {
     
 }
 
-extension ModifyContentViewController: UITextViewDelegate {
+extension ModifyContentViewController: UITextViewDelegate, UITextFieldDelegate {
     
     // MARK: extension - textView focus placeholder
     // textView focus
@@ -66,7 +95,6 @@ extension ModifyContentViewController: UITextViewDelegate {
             textView.textColor = UIColor.black
         }
     }
-    
     // textView focus end
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
@@ -86,12 +114,42 @@ extension ModifyContentViewController: UITextViewDelegate {
         
         var limitedLength: Int
         if textView == contentEditor.titleTextView {
-            limitedLength = 60
+            limitedLength = 100
         } else {
             limitedLength = 1000
         }
         
         return newLength < limitedLength
+    }
+    
+    // MARK: extension - textViewDidChange
+    func textViewDidChange(_ textView: UITextView) {
+        let title = contentEditor.titleTextView
+        let content = contentEditor.contentTextView
+        
+        guard let changedTextView = title.text else { return }
+        if changedTextView.contains("\n") {
+            let trimText = changedTextView.trimmingCharacters(in: .newlines)
+            title.text = trimText
+            content.becomeFirstResponder()
+            content.selectedTextRange = content.textRange(from: content.endOfDocument, to: content.endOfDocument)
+        }
+    }
+    
+    // MARK: extension - setUpKeyboardButton
+    func setUpKeyboardButton() {
+        let toolbar = UIToolbar()
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(endEditingToKeyboard))
+        let flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.sizeToFit()
+        toolbar.setItems([flexibleSpaceButton, doneBtn], animated: false)
+        
+        contentEditor.titleTextView.inputAccessoryView = toolbar
+        contentEditor.contentTextView.inputAccessoryView = toolbar
+    }
+    @objc func endEditingToKeyboard() {
+        contentEditor.titleTextView.resignFirstResponder()
+        contentEditor.contentTextView.resignFirstResponder()
     }
     
     // MARK: alertNilText

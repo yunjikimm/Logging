@@ -12,27 +12,28 @@ class ContentEditor: UIScrollView {
     
     // MARK: component
     let writeScrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let scrollview = UIScrollView()
+        scrollview.translatesAutoresizingMaskIntoConstraints = false
+        return scrollview
     }()
     lazy var superStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [buttonStackView, titleTextView, pathView, contentTextView])
-        view.axis = .vertical
-        view.alignment = .fill
-        view.distribution = .equalSpacing
-        view.spacing = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let stackView = UIStackView(arrangedSubviews: [buttonStackView, titleTextView, pathView, contentTextView])
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     lazy var buttonStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [dismissButton, writeButton])
-        view.axis = .horizontal
-        view.alignment = .fill
-        view.distribution = .equalSpacing
-        view.spacing = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let stackView = UIStackView(arrangedSubviews: [dismissButton, writeButton])
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 0
+        stackView.layoutMargins = UIEdgeInsets(top: .zero, left: 10, bottom: .zero, right: 10)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     let dismissButton: UIButton = {
         let button = UIButton()
@@ -48,22 +49,24 @@ class ContentEditor: UIScrollView {
         return button
     }()
     let titleTextView: UITextView = {
-        let view = UITextView()
-        view.text = PLACEHOLDER.TITLE
-        view.textColor = UIColor.lightGray
-        view.font = .boldSystemFont(ofSize: 25)
-        view.isScrollEnabled = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let textView = UITextView()
+        textView.text = PLACEHOLDER.TITLE
+        textView.textColor = UIColor.lightGray
+        textView.font = .boldSystemFont(ofSize: 25)
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView.isScrollEnabled = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
     let contentTextView: UITextView = {
-        let view = UITextView()
-        view.text = PLACEHOLDER.CONTENT
-        view.textColor = UIColor.lightGray
-        view.font = .systemFont(ofSize: 17)
-        view.isScrollEnabled = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let textView = UITextView()
+        textView.text = PLACEHOLDER.CONTENT
+        textView.textColor = UIColor.lightGray
+        textView.font = .systemFont(ofSize: 17)
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView.isScrollEnabled = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
     let pathView: UIView = {
         let view = UIView()
@@ -101,13 +104,14 @@ class ContentEditor: UIScrollView {
             superStackView.trailingAnchor.constraint(equalTo: writeScrollView.contentLayoutGuide.trailingAnchor),
             superStackView.bottomAnchor.constraint(equalTo: writeScrollView.contentLayoutGuide.bottomAnchor),
             superStackView.widthAnchor.constraint(equalTo: writeScrollView.widthAnchor),
+//            superStackView.heightAnchor.constraint(equalTo: writeScrollView.heightAnchor),
         ])
     }
     
     func setUpButtonStackView() {
-        superStackView.addSubview(buttonStackView)
-        buttonStackView.addSubview(dismissButton)
-        buttonStackView.addSubview(writeButton)
+        superStackView.addArrangedSubview(buttonStackView)
+        buttonStackView.addArrangedSubview(dismissButton)
+        buttonStackView.addArrangedSubview(writeButton)
         
         NSLayoutConstraint.activate([
             buttonStackView.topAnchor.constraint(equalTo: superStackView.topAnchor),
@@ -118,23 +122,24 @@ class ContentEditor: UIScrollView {
     }
     
     func setUpTextStackView() {
-        superStackView.addSubview(titleTextView)
-        superStackView.addSubview(pathView)
-        superStackView.addSubview(contentTextView)
+        superStackView.addArrangedSubview(titleTextView)
+        superStackView.addArrangedSubview(pathView)
+        superStackView.addArrangedSubview(contentTextView)
         
         NSLayoutConstraint.activate([
-            titleTextView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
             titleTextView.leadingAnchor.constraint(equalTo: superStackView.leadingAnchor),
             titleTextView.trailingAnchor.constraint(equalTo: superStackView.trailingAnchor),
+            titleTextView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
             
-            pathView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
             pathView.leadingAnchor.constraint(equalTo: superStackView.leadingAnchor),
             pathView.trailingAnchor.constraint(equalTo: superStackView.trailingAnchor),
+            pathView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
             pathView.heightAnchor.constraint(equalToConstant: 1),
             
-            contentTextView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
             contentTextView.leadingAnchor.constraint(equalTo: superStackView.leadingAnchor),
             contentTextView.trailingAnchor.constraint(equalTo: superStackView.trailingAnchor),
+//            contentTextView.bottomAnchor.constraint(equalTo: superStackView.bottomAnchor),
+            contentTextView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
         ])
     }
     
