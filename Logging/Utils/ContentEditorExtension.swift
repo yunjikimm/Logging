@@ -75,6 +75,18 @@ extension WriteContentViewController: UITextViewDelegate, UITextFieldDelegate {
         contentEditor.contentTextView.resignFirstResponder()
     }
     
+    // MARK: extension - keyboardWillShow,keyboardWillHide
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo as NSDictionary?,
+              let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+                  return
+              }
+        contentEditor.writeScrollView.contentInset.bottom = (keyboardFrame.size.height - view.safeAreaInsets.bottom)
+    }
+    @objc func keyboardWillHide(_ notification: Notification) {
+        contentEditor.writeScrollView.contentInset.bottom = 0.0
+    }
+    
     // MARK: alertNilText
     func alertNilText(_ alertText: String) {
         let alert = UIAlertController(title: "알림", message: alertText+"을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
@@ -150,6 +162,18 @@ extension ModifyContentViewController: UITextViewDelegate, UITextFieldDelegate {
     @objc func endEditingToKeyboard() {
         contentEditor.titleTextView.resignFirstResponder()
         contentEditor.contentTextView.resignFirstResponder()
+    }
+    
+    // MARK: extension - keyboardWillShow,keyboardWillHide
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo as NSDictionary?,
+              let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+                  return
+              }
+        contentEditor.writeScrollView.contentInset.bottom = (keyboardFrame.size.height - view.safeAreaInsets.bottom)
+    }
+    @objc func keyboardWillHide(_ notification: Notification) {
+        contentEditor.writeScrollView.contentInset.bottom = 0.0
     }
     
     // MARK: alertNilText

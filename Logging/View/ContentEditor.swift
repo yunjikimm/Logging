@@ -99,12 +99,11 @@ class ContentEditor: UIScrollView {
             writeScrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             writeScrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
-            superStackView.topAnchor.constraint(equalTo: writeScrollView.contentLayoutGuide.topAnchor),
-            superStackView.leadingAnchor.constraint(equalTo: writeScrollView.contentLayoutGuide.leadingAnchor),
-            superStackView.trailingAnchor.constraint(equalTo: writeScrollView.contentLayoutGuide.trailingAnchor),
-            superStackView.bottomAnchor.constraint(equalTo: writeScrollView.contentLayoutGuide.bottomAnchor),
+            superStackView.topAnchor.constraint(equalTo: writeScrollView.topAnchor),
+            superStackView.leadingAnchor.constraint(equalTo: writeScrollView.leadingAnchor),
+            superStackView.trailingAnchor.constraint(equalTo: writeScrollView.trailingAnchor),
+            superStackView.bottomAnchor.constraint(equalTo: writeScrollView.bottomAnchor),
             superStackView.widthAnchor.constraint(equalTo: writeScrollView.widthAnchor),
-//            superStackView.heightAnchor.constraint(equalTo: writeScrollView.heightAnchor),
         ])
     }
     
@@ -127,19 +126,7 @@ class ContentEditor: UIScrollView {
         superStackView.addArrangedSubview(contentTextView)
         
         NSLayoutConstraint.activate([
-            titleTextView.leadingAnchor.constraint(equalTo: superStackView.leadingAnchor),
-            titleTextView.trailingAnchor.constraint(equalTo: superStackView.trailingAnchor),
-            titleTextView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
-            
-            pathView.leadingAnchor.constraint(equalTo: superStackView.leadingAnchor),
-            pathView.trailingAnchor.constraint(equalTo: superStackView.trailingAnchor),
-            pathView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
             pathView.heightAnchor.constraint(equalToConstant: 1),
-            
-            contentTextView.leadingAnchor.constraint(equalTo: superStackView.leadingAnchor),
-            contentTextView.trailingAnchor.constraint(equalTo: superStackView.trailingAnchor),
-//            contentTextView.bottomAnchor.constraint(equalTo: superStackView.bottomAnchor),
-            contentTextView.widthAnchor.constraint(equalTo: superStackView.widthAnchor),
         ])
     }
     

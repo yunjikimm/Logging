@@ -26,6 +26,8 @@ class ModifyContentViewController: UIViewController {
         setUpKeyboardButton()
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +35,7 @@ class ModifyContentViewController: UIViewController {
         contentEditor.contentTextView.text = contentList.content
         contentEditor.titleTextView.textColor = .black
         contentEditor.contentTextView.textColor = .black
+        print("수정: \(contentEditor.writeScrollView.contentInset)")
     }
     
     // MARK: setUpTextView
@@ -68,7 +71,11 @@ class ModifyContentViewController: UIViewController {
         
         if modifiedTitleText == PLACEHOLDER.TITLE {
             alertNilText("제목")
+        } else if modifiedTitleText == "" {
+            alertNilText("제목")
         } else if modifiedContentText == PLACEHOLDER.CONTENT {
+            alertNilText("내용")
+        } else if modifiedContentText == "" {
             alertNilText("내용")
         } else {
             let modifiedContentObject = Content(

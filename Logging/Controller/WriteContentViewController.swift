@@ -25,6 +25,8 @@ class WriteContentViewController: UIViewController {
         setUpKeyboardButton()
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,6 +34,7 @@ class WriteContentViewController: UIViewController {
         contentEditor.contentTextView.text = PLACEHOLDER.CONTENT
         contentEditor.titleTextView.textColor = UIColor.lightGray
         contentEditor.contentTextView.textColor = UIColor.lightGray
+        print("작성: \(contentEditor.writeScrollView.contentInset)")
     }
     
     // MARK: setUpView
@@ -67,7 +70,11 @@ class WriteContentViewController: UIViewController {
         
         if writedTitleText == PLACEHOLDER.TITLE {
             alertNilText("제목")
+        } else if writedTitleText == "" {
+            alertNilText("제목")
         } else if writedContentText == PLACEHOLDER.CONTENT {
+            alertNilText("내용")
+        } else if writedContentText == "" {
             alertNilText("내용")
         } else {
             let createdContentObject = Content(
