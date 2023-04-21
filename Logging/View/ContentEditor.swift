@@ -38,20 +38,18 @@ class ContentEditor: UIScrollView {
     let dismissButton: UIButton = {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     let writeButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     let titleTextView: UITextView = {
         let textView = UITextView()
-        textView.text = PLACEHOLDER.TITLE
-        textView.textColor = UIColor.lightGray
         textView.font = .boldSystemFont(ofSize: 25)
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         textView.isScrollEnabled = false
@@ -60,8 +58,6 @@ class ContentEditor: UIScrollView {
     }()
     let contentTextView: UITextView = {
         let textView = UITextView()
-        textView.text = PLACEHOLDER.CONTENT
-        textView.textColor = UIColor.lightGray
         textView.font = .systemFont(ofSize: 17)
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         textView.isScrollEnabled = false
@@ -71,7 +67,7 @@ class ContentEditor: UIScrollView {
     let pathView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.quaternaryLabel.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

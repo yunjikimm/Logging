@@ -33,8 +33,8 @@ class ModifyContentViewController: UIViewController {
         super.viewWillAppear(animated)
         contentEditor.titleTextView.text = contentList.title
         contentEditor.contentTextView.text = contentList.content
-        contentEditor.titleTextView.textColor = .black
-        contentEditor.contentTextView.textColor = .black
+        contentEditor.titleTextView.textColor = .label
+        contentEditor.contentTextView.textColor = .label
         print("수정: \(contentEditor.writeScrollView.contentInset)")
     }
     

@@ -15,7 +15,6 @@ extension HomeViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.contentObject.count == 0 {
             self.tableView.backgroundView = EmptyLogTableViewCell()
-            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
             return 0
         } else {
             self.tableView.backgroundView = nil
@@ -40,7 +39,7 @@ extension HomeViewController {
             cell.updatedAtLabel.text = String(describing: dateString)
         }
 
-        cell.separatorInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        cell.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         
         return cell
     }

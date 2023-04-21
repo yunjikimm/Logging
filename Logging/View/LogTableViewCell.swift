@@ -20,6 +20,7 @@ class LogTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 25)
+        label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
         return label
@@ -28,6 +29,7 @@ class LogTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 17)
+        label.textColor = .label
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
         return label
@@ -36,7 +38,7 @@ class LogTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .systemGray
+        label.textColor = .secondaryLabel
         return label
     }()
     

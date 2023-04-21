@@ -23,6 +23,7 @@ class LogTableViewHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 34)
+        label.textColor = .label
         return label
     }()
     

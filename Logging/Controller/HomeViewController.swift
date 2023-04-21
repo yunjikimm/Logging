@@ -75,7 +75,8 @@ class HomeViewController: UITableViewController {
     private func buttonConfigure() {
         view.addSubview(writeContentActionButton)
         
-        writeContentActionButton.buttonColor = .black
+        writeContentActionButton.buttonColor = .label
+        writeContentActionButton.buttonImageColor = .opaqueSeparator
         
         writeContentActionButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

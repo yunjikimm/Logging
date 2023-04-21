@@ -32,8 +32,8 @@ class WriteContentViewController: UIViewController {
         super.viewWillAppear(animated)
         contentEditor.titleTextView.text = PLACEHOLDER.TITLE
         contentEditor.contentTextView.text = PLACEHOLDER.CONTENT
-        contentEditor.titleTextView.textColor = UIColor.lightGray
-        contentEditor.contentTextView.textColor = UIColor.lightGray
+        contentEditor.titleTextView.textColor = .placeholderText
+        contentEditor.contentTextView.textColor = .placeholderText
         print("작성: \(contentEditor.writeScrollView.contentInset)")
     }
     

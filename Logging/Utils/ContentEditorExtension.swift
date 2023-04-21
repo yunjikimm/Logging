@@ -15,13 +15,13 @@ extension WriteContentViewController: UITextViewDelegate, UITextFieldDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == PLACEHOLDER.TITLE || textView.text == PLACEHOLDER.CONTENT {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = .label
         }
     }
     // textView focus end
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.textColor = UIColor.lightGray
+            textView.textColor = .placeholderText
             if textView == contentEditor.titleTextView {
                 textView.text = PLACEHOLDER.TITLE
             } else if textView == contentEditor.contentTextView {
@@ -104,13 +104,13 @@ extension ModifyContentViewController: UITextViewDelegate, UITextFieldDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == PLACEHOLDER.TITLE || textView.text == PLACEHOLDER.CONTENT {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = .label
         }
     }
     // textView focus end
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.textColor = UIColor.lightGray
+            textView.textColor = .placeholderText
             if textView == contentEditor.titleTextView {
                 textView.text = PLACEHOLDER.TITLE
             } else if textView == contentEditor.contentTextView {

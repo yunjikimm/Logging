@@ -16,7 +16,7 @@ class EmptyLogTableViewCell: UIView {
         label.text = EMPTYTABLE.EMPTY
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.center
-        label.textColor = UIColor.lightGray
+        label.textColor = .systemGray
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
