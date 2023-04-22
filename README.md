@@ -2,7 +2,9 @@
 - 오늘의 짧은 로그 남기기
 - `v1.0.0` 2023.01 - 2023.04
 
-<img src="https://user-images.githubusercontent.com/68881093/233706604-59198ddb-aa55-4eee-ba2f-04bd50e6ea90.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233706594-4308be61-ef67-47e5-86ba-55b4349c32d8.png" width="250px">
+> Logging은 라이트모드, 다크모드를 지원합니다.
+
+<img src="https://user-images.githubusercontent.com/68881093/233760226-e6314c23-9c5d-4bad-b81c-6078b6335f3f.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760217-b2d6ff1d-34e6-428a-b6e1-ff4bdf36434a.png" width="250px">
 
 <br>
 
@@ -26,14 +28,18 @@
 <br>
 
 ## 📱 주요 화면 및 기능
-> 앱을 실행하면 바로 내가 남긴 로그를 확인할 수 있습니다.<br>Logging은 라이트모드, 다크모드를 지원합니다.
+> 앱을 실행하면 바로 내가 남긴 로그를 확인할 수 있습니다.
 
-<img src="https://user-images.githubusercontent.com/68881093/233706613-657a3b31-b8af-4564-963b-eef6c93d6ea1.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233706608-72a8f69e-5c38-4188-8677-6946cb3e2d91.png" width="250px">
+<img src="https://user-images.githubusercontent.com/68881093/233760234-cda904b4-8fe0-48d8-8844-7d7be83d5258.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760229-a84330d8-cc27-4b73-8c93-ed2711f6f050.png" width="250px">
+
+<img src="https://user-images.githubusercontent.com/68881093/233761231-fa8727ca-016e-4e7d-ba69-a219ae38a6bb.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233761230-4979cb93-f3eb-4f78-8452-9b084ee7b5d6.png" width="250px">
 
 > 홈 화면에서 우측 하단의 버튼을 눌러 로그를 등록할 수 있습니다.
 
-<img src="https://user-images.githubusercontent.com/68881093/233706615-79dce7b5-db54-41db-9f9f-66ce999b537a.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233706616-86fae37d-427b-4cf2-8452-d93e524e8404.png" width="250px">
+<img src="https://user-images.githubusercontent.com/68881093/233760240-2f36dac4-141a-4401-972d-ad994a7cd5d8.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760237-897ea269-a79d-4fe6-b723-24af5bed5f68.png" width="250px">
+
+<img src="https://user-images.githubusercontent.com/68881093/233760244-c147e85d-5a49-48b3-9bc1-d720518f7b7f.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760242-74d9c095-2806-4245-813f-c779382d4566.png" width="250px">
 
 > 홈 화면에서 로그를 스와이프하면 수정 및 삭제를 할 수 있습니다.
 
-<img src="https://user-images.githubusercontent.com/68881093/233706619-503b216c-d2b3-4d34-be6f-d11c64fd578f.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233706621-7c734494-e9f0-492b-b4e2-3f7c4f2b47ca.png" width="250px">
+<img src="https://user-images.githubusercontent.com/68881093/233760250-c39ae126-3441-422e-9e26-974971ce15bb.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760247-2f8526a3-d3bd-4d39-813f-cde92334a493.png" width="250px">
