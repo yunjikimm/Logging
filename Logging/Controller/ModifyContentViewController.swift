@@ -23,9 +23,10 @@ class ModifyContentViewController: UIViewController {
         super.viewDidLoad()
         setUpTextView()
         setUpView()
-        setUpKeyboardButton()
+        
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -35,7 +36,6 @@ class ModifyContentViewController: UIViewController {
         contentEditor.contentTextView.text = contentList.content
         contentEditor.titleTextView.textColor = .label
         contentEditor.contentTextView.textColor = .label
-        print("수정: \(contentEditor.writeScrollView.contentInset)")
     }
     
     // MARK: setUpTextView

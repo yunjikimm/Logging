@@ -59,22 +59,6 @@ extension WriteContentViewController: UITextViewDelegate, UITextFieldDelegate {
         }
     }
     
-    // MARK: extension - setUpKeyboardButton
-    func setUpKeyboardButton() {
-        let toolbar = UIToolbar()
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(endEditingToKeyboard))
-        let flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.sizeToFit()
-        toolbar.setItems([flexibleSpaceButton, doneBtn], animated: false)
-        
-        contentEditor.titleTextView.inputAccessoryView = toolbar
-        contentEditor.contentTextView.inputAccessoryView = toolbar
-    }
-    @objc func endEditingToKeyboard() {
-        contentEditor.titleTextView.resignFirstResponder()
-        contentEditor.contentTextView.resignFirstResponder()
-    }
-    
     // MARK: extension - keyboardWillShow,keyboardWillHide
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo as NSDictionary?,
@@ -146,22 +130,6 @@ extension ModifyContentViewController: UITextViewDelegate, UITextFieldDelegate {
             content.becomeFirstResponder()
             content.selectedTextRange = content.textRange(from: content.endOfDocument, to: content.endOfDocument)
         }
-    }
-    
-    // MARK: extension - setUpKeyboardButton
-    func setUpKeyboardButton() {
-        let toolbar = UIToolbar()
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(endEditingToKeyboard))
-        let flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.sizeToFit()
-        toolbar.setItems([flexibleSpaceButton, doneBtn], animated: false)
-        
-        contentEditor.titleTextView.inputAccessoryView = toolbar
-        contentEditor.contentTextView.inputAccessoryView = toolbar
-    }
-    @objc func endEditingToKeyboard() {
-        contentEditor.titleTextView.resignFirstResponder()
-        contentEditor.contentTextView.resignFirstResponder()
     }
     
     // MARK: extension - keyboardWillShow,keyboardWillHide

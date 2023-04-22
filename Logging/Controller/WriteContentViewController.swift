@@ -22,9 +22,10 @@ class WriteContentViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setUpTextView()
-        setUpKeyboardButton()
+        
         contentEditor.dismissButton.addTarget(self, action: #selector(clickedDismissButton), for: .touchUpInside)
         contentEditor.writeButton.addTarget(self, action: #selector(clickedWriteButton), for: .touchUpInside)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -34,7 +35,6 @@ class WriteContentViewController: UIViewController {
         contentEditor.contentTextView.text = PLACEHOLDER.CONTENT
         contentEditor.titleTextView.textColor = .placeholderText
         contentEditor.contentTextView.textColor = .placeholderText
-        print("작성: \(contentEditor.writeScrollView.contentInset)")
     }
     
     // MARK: setUpView
