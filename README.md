@@ -1,45 +1,44 @@
 # Logging | Memo App
-- 오늘의 짧은 로그 남기기
-- `v1.0.0` 2023.01 - 2023.04
+- 간단한 CRUD가 가능한 텍스트 메모 앱
+- 2023.01 ~ 2023.04
 
-> Logging은 라이트모드, 다크모드를 지원합니다.
-
-<img src="https://user-images.githubusercontent.com/68881093/233760226-e6314c23-9c5d-4bad-b81c-6078b6335f3f.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760217-b2d6ff1d-34e6-428a-b6e1-ff4bdf36434a.png" width="250px">
-
-<br>
+<img src="https://github.com/yunjikimm/Logging/assets/68881093/d2565094-2c55-4bc3-8c90-9a6165b1234c" width="200px">
+<img src="https://github.com/yunjikimm/Logging/assets/68881093/635f2545-251a-4c4e-add5-9b1b9c9b253e" width="200px">
 
 ## 📝 프로젝트 소개
-짧은 글을 로그처럼 남겨볼 수 있습니다.
+짧은 메모를 로그처럼 남겨볼 수 있습니다.
 
-내가 남긴 로그는 여러 번의 클릭 없이 한 번에 볼 수 있습니다.
+내가 남긴 메모는 여러 번의 클릭 없이 한 번에 볼 수 있습니다.
 
-로그는 스와이프하여 수정 및 삭제를 쉽게 할 수 있습니다.
-
-<br>
+메모는 스와이프하여 수정 및 삭제를 쉽게 할 수 있습니다.
 
 ## 🛠️ 기술 스택
-
-|구분|내용|
-|---|---|
-|아키텍처|`MVC`|
-|프레임워크|`UIKit`|
-|라이브러리|`JJFloatingActionButton` `RealmSwift`|
-
-<br>
+- Swift, UIKit
+- 아키텍처: MVC
+- 라이브러리: RealmSwift, JJFloatingActionButton
+- 라이트모드, 다크모드 지원
+- 가로모드 미지원
 
 ## 📱 주요 화면 및 기능
-> 앱을 실행하면 바로 내가 남긴 로그를 확인할 수 있습니다.
+#### 1. 홈
+- 앱을 실행하면 바로 내가 남긴 메모를 확인할 수 있습니다.
 
-<img src="https://user-images.githubusercontent.com/68881093/233760234-cda904b4-8fe0-48d8-8844-7d7be83d5258.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760229-a84330d8-cc27-4b73-8c93-ed2711f6f050.png" width="250px">
+|`라이트모드`|`다크모드`|
+|:----:|:----:|
+| <img src="https://github.com/yunjikimm/Logging/assets/68881093/915e9f5b-b10a-4862-8faa-182703cbe50d" width="200px"> <img src="https://github.com/yunjikimm/Logging/assets/68881093/b72412a7-72ce-4dbc-82a4-d1357e2eabd5" width="200px"> | <img src="https://github.com/yunjikimm/Logging/assets/68881093/f4c0989a-1c1e-4133-a283-fa208465cd07" width="200px"> <img src="https://github.com/yunjikimm/Logging/assets/68881093/ce86846d-4387-40a9-bcd6-8368d191ef2a" width="200px"> |
 
-<img src="https://user-images.githubusercontent.com/68881093/233761231-fa8727ca-016e-4e7d-ba69-a219ae38a6bb.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233761230-4979cb93-f3eb-4f78-8452-9b084ee7b5d6.png" width="250px">
+#### 2. 메모 등록
+- 홈 화면에서 우측 하단의 버튼을 눌러 메모를 등록할 수 있습니다.
+- 제목 입력 후 키보드의 `return` 버튼 클릭 시 커서가 내용 텍스트 필드로 이동됩니다.
+- 내용 입력 시 커서가 키보드에 가려지는 것을 방지하고자 스크롤이 생성됩니다.
 
-> 홈 화면에서 우측 하단의 버튼을 눌러 로그를 등록할 수 있습니다.
+|`라이트모드`|`다크모드`|
+|:----:|:----:|
+| <img src="https://github.com/yunjikimm/Logging/assets/68881093/70dcf6ee-5723-4326-8f00-6fb9b151d17e" width="200px"> <img src="https://github.com/yunjikimm/Logging/assets/68881093/c489b163-febc-4ad7-826f-4043b040fd2a" width="200px"> | <img src="https://github.com/yunjikimm/Logging/assets/68881093/f3a7aee3-ba22-45f9-ac60-a1b1344f73b2" width="200px"> <img src="https://github.com/yunjikimm/Logging/assets/68881093/737f2290-902f-4cdc-8eb0-8722ecdb05e0" width="200px"> |
 
-<img src="https://user-images.githubusercontent.com/68881093/233760240-2f36dac4-141a-4401-972d-ad994a7cd5d8.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760237-897ea269-a79d-4fe6-b723-24af5bed5f68.png" width="250px">
+#### 3. 메모 수정 및 삭제
+- 홈 화면에서 로그를 스와이프하면 수정 및 삭제를 할 수 있습니다.
 
-<img src="https://user-images.githubusercontent.com/68881093/233760244-c147e85d-5a49-48b3-9bc1-d720518f7b7f.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760242-74d9c095-2806-4245-813f-c779382d4566.png" width="250px">
-
-> 홈 화면에서 로그를 스와이프하면 수정 및 삭제를 할 수 있습니다.
-
-<img src="https://user-images.githubusercontent.com/68881093/233760250-c39ae126-3441-422e-9e26-974971ce15bb.png" width="250px"> <img src="https://user-images.githubusercontent.com/68881093/233760247-2f8526a3-d3bd-4d39-813f-cde92334a493.png" width="250px">
+|`라이트모드`|`다크모드`|
+|:----:|:----:|
+| <img src="https://github.com/yunjikimm/Logging/assets/68881093/2144f727-ef9b-4804-a75f-6b23c1c2e5bb" width="200px"> | <img src="https://github.com/yunjikimm/Logging/assets/68881093/6fdaaef6-419f-4ff7-880c-56ee7bdfc555" width="200px"> |
