@@ -25,7 +25,7 @@
 
 <img src="https://github.com/yunjikimm/Logging/assets/68881093/915e9f5b-b10a-4862-8faa-182703cbe50d" width="200px">
 <img src="https://github.com/yunjikimm/Logging/assets/68881093/b72412a7-72ce-4dbc-82a4-d1357e2eabd5" width="200px">
-<img src="https://github.com/yunjikimm/Logging/assets/68881093/f4c0989a-1c1e-4133-a283-fa208465cd07" width="200px">
+<img src="https://github.com/yunjikimm/Logging/assets/68881093/8649a9dd-0f7b-4c64-a52a-198d89d5a45d" width="200px">
 <img src="https://github.com/yunjikimm/Logging/assets/68881093/ce86846d-4387-40a9-bcd6-8368d191ef2a" width="200px">
 
 #### 2. 메모 등록
